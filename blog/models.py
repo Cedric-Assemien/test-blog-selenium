@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 User = get_user_model()
@@ -50,7 +51,7 @@ class Article(models.Model):
     titre = models.CharField(max_length=256)
     couverture = models.ImageField(upload_to="articles")
     resume = models.TextField()
-    contenu = models.TextField()
+    contenu = CKEditor5Field('Text', config_name='extends')
 
     auteur_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="auteur_article_ids")
     categorie_id = models.ForeignKey('blog.Categorie', on_delete=models.SET_NULL, null=True, related_name="categorie_article_ids", verbose_name="Catégorie")
