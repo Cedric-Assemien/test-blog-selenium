@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django_ckeditor_5.fields import CKEditor5Field
+from django.template.defaultfilters import slugify
 
 
 User = get_user_model()
@@ -58,7 +59,8 @@ class Article(models.Model):
     tag_ids = models.ManyToManyField('blog.Tag', related_name="tag_article_ids", verbose_name="Tags")
     
     est_publie = models.BooleanField(default=False)
-    date_de_publicatio = models.DateField()
+    date_de_publicatio = models.DateField(auto_now_add=True)
+    slug = models.SlugField(default="", null=False, blank=True)
 
     # Standards
     statut = models.BooleanField(default=True)
@@ -68,6 +70,10 @@ class Article(models.Model):
     def __str__(self):
         return self.titre
     
+    def save(self, *args, **kwargs):
+       self.slug = slugify(self.titre) + "-" + str(self.date_de_publicatio.year)
+       super(Article, self).save(*args, **kwargs)
+
 
 class Commentaire(models.Model):
 
