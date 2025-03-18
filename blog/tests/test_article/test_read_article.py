@@ -43,12 +43,12 @@ def test_consulter_article():
 
     for row in rows:
         cells = row.find_elements(By.CSS_SELECTOR, ".table__cell")
-        if len(cells) > 1 and cells[1].text == "Titre de l'article":  # Vérifier le titre dans la deuxième cellule
+        if len(cells) > 1 and cells[1].text == "Article numero 1":  # Vérifier le titre dans la deuxième cellule
             print(f"Article trouvé : {cells[1].text}")
             article_trouve = True
             break
 
-    assert article_trouve, f"L'article 'Titre de l'article' n'a pas été trouvé dans le tableau."
+    assert article_trouve, f"L'article 'Article numero 1' n'a pas été trouvé dans le tableau."
 
   
 

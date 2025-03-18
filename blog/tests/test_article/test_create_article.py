@@ -40,7 +40,7 @@ def test_create_article():
     tags_input = wait.until(EC.visibility_of_element_located((By.ID, "tags")))
 
     # Remplir les champs du formulaire
-    titre_article = "Titre de l'article"  # Stocker le titre dans une variable pour la vérification
+    titre_article = "Article numero 1"  # Stocker le titre dans une variable pour la vérification
     titre_input.send_keys(titre_article)
     resume_input.send_keys("Résumé de l'article")
     

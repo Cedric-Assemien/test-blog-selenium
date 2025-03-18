@@ -35,19 +35,19 @@ def test_supprimer_article():
 
     # Attendre que le tableau soit chargé
     wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".table__row")))
-
+    
     # Parcourir les lignes du tableau pour trouver l'article
     rows = driver.find_elements(By.CSS_SELECTOR, ".table__row")
     article_trouve = False
 
     for row in rows:
         cells = row.find_elements(By.CSS_SELECTOR, ".table__cell")
-        if len(cells) > 1 and cells[1].text == "Titre de l'article":
+        if len(cells) > 1 and cells[1].text == "Article numero 1":
             print(f"Article trouvé : {cells[1].text}")
             article_trouve = True
             break
 
-    assert article_trouve, f"L'article 'Titre de l'article' n'a pas été trouvé dans le tableau."
+    assert article_trouve, f"L'article 'Article numero 1' n'a pas été trouvé dans le tableau."
 
     # Scroller jusqu'au bouton "Supprimer"
     supprimer_button = driver.find_element(By.CSS_SELECTOR, "a.btn-danger")

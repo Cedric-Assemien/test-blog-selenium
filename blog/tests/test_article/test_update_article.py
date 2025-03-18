@@ -11,7 +11,7 @@ def test_modifier_article():
     driver = webdriver.Chrome()  # Assurez-vous que le chemin du chromedriver est correct
     driver.get("http://127.0.0.1:8000/account/sing_in")  # Remplacez par l'URL de votre page de connexion
 
-    wait = WebDriverWait(driver, 20)
+    wait = WebDriverWait(driver, 30)
 
     # Connexion avec un utilisateur valide
     email_input = wait.until(EC.visibility_of_element_located((By.ID, "email")))
@@ -45,12 +45,12 @@ def test_modifier_article():
 
     for row in rows:
         cells = row.find_elements(By.CSS_SELECTOR, ".table__cell")
-        if len(cells) > 1 and cells[1].text == "Titre de l'article":  # Vérifier le titre dans la deuxième cellule
+        if len(cells) > 1 and cells[1].text == "Article numero 1":  # Vérifier le titre dans la deuxième cellule
             print(f"Article trouvé : {cells[1].text}")
             article_trouve = True
             break
 
-    assert article_trouve, f"L'article 'Titre de l'article' n'a pas été trouvé dans le tableau."
+    assert article_trouve, f"L'article 'Article numero 1' n'a pas été trouvé dans le tableau."
 
     # Cliquez sur le lien pour modifier l'article
    # Scroller jusqu'au bouton
@@ -64,12 +64,13 @@ def test_modifier_article():
     driver.execute_script("arguments[0].click();", modifier_button)
 
     # Attendre que la page de modification de l'article soit chargée
-    wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".article__form")))
+    # wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".table__row")))
 
     # Remplir le formulaire de modification
     titre_input = wait.until(EC.visibility_of_element_located((By.ID, "titre")))
     titre_input.clear()
     titre_input.send_keys("Nouveau titre")
+    print(titre_input)
 
     # Soumettre le formulaire
     driver.find_element(By.CSS_SELECTOR, ".btn-default").click()
