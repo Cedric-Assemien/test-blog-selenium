@@ -66,27 +66,9 @@
 					<div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item submenu"><a class="nav-link {{ active_index }}" href="{% url 'index' %}">Home</a>
-                                    <!-- <ul>
-                                        <li class="nav-item"><a class="nav-link" href="index-2.html">Home - Image</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="index-video.html">Home - Video</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="index-slider.html">Home - Slider</a></li>
-                                    </ul> -->
-                                </li>                                
+                                <li class="nav-item"><a class="nav-link {{ active_index }}" href="{% url 'index' %}">Home</a></li>                                
                                 <li class="nav-item"><a class="nav-link {{ active_about }}" href="{% url 'about' %}">About Us</a>
-                                <!-- <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li> -->
-                                <!-- <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li> -->
                                 <li class="nav-item"><a class="nav-link {{ active_blog }}" href="{% url 'blog' %}">Blog</a></li>
-                                <!-- <li class="nav-item submenu"><a class="nav-link" href="#">Pages</a>
-                                    <ul>                                        
-                                        <li class="nav-item"><a class="nav-link" href="service-single.html">Service Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="project-single.html">Project Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="image-gallery.html">Image Gallery</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="faqs.html">FAQs</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="404.html">404</a></li>
-                                    </ul>
-                                </li> -->
                                 {% if user.is_authenticated %}
                                     <li class="nav-item">
                                         <a href="{% url 'create_article' %}" class="nav-link {{ active_create }} ">Créer un article</a>

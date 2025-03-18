@@ -2,11 +2,17 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from blog.views import index,about,contact
+from blog.views.index import index
+from blog.views.about import about
+from blog.views.contact import contact
 from django.conf.urls.static import static
 # Importation de rest_framework
 from rest_framework import routers
-from blog.viewsets import ArticleViewSet,CategorieViewSet,TagViewSet,CommentaireViewSet,LikeViewSet
+from blog.viewsets.article import ArticleViewSet
+from blog.viewsets.categorie import CategorieViewSet
+from blog.viewsets.tag import TagViewSet
+from blog.viewsets.commentaire import CommentaireViewSet
+from blog.viewsets.like import LikeViewSet
 # Importation de drf_yasg
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
@@ -51,7 +57,7 @@ urlpatterns = [
     path('', index, name='index'),
     path("about/", about, name="about"),
     path("contact/", contact, name="contact"),
-    path('blog/', include('blog.urls')),
+    path('', include('blog.urls')),
     path('account/', include('account.urls')),
     
     path('api', include(router.urls)),

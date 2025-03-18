@@ -1,5 +1,10 @@
 from django.urls import path
-from .views import home,register,sing_in,log_out,forgot_password,update_password,active_compte
+from account.views.register import register
+from account.views.sing_in import sing_in
+from account.views.log_out import log_out
+from account.views.forgot_password import forgot_password
+from account.views.update_password import update_password
+from account.views.active_compte import active_compte
 
 urlpatterns = [
     path('register', register,name='register'),
